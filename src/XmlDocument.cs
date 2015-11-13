@@ -50,7 +50,7 @@ namespace XmlGuy
 
 				if (e is CDataElement)
 				{
-					sb.Add("<![CDATA[" + e.Value + "]]>", pretty, currentDepth--);
+					sb.Add("<![CDATA[ " + e.Value + " ]]>", pretty, currentDepth--);
 					return;
 				}
 
