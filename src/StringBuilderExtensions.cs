@@ -9,7 +9,7 @@ namespace XmlGuy
 	{
 		public static void Add(this StringBuilder sb, string s, bool pretty = false, int tabs = 0)
 		{
-			for (int i = 0; i < tabs; i++)
+			for (var i = 0; i < tabs; i++)
 				s = "\t" + s;
 
 			if (pretty)

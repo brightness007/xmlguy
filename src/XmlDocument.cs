@@ -84,7 +84,7 @@ namespace XmlGuy
 			return pretty ? sb.ToString().Trim() : sb.ToString().Replace("\t", "");
 		}
 
-		private string GetAttributes(XmlElement e)
+		private static string GetAttributes(XmlElement e)
 		{
 		    return e.Attributes.Aggregate(" ", (current, attr) => current + (attr.Key + "=\"" + attr.Value + "\" "));
 		}

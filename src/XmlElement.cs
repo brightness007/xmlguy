@@ -24,21 +24,19 @@ namespace XmlGuy
 		public XmlElement Add(string name, params object[] args)
 		{
 			string value = null;
-			Dictionary<string, string> attributes = new Dictionary<string, string>();
+			var attributes = new Dictionary<string, string>();
 
-			if (args != null)
-			{
-				foreach (var arg in args)
-				{
-					if (arg is string)
-						value = arg as string;
-					else
-						foreach (var prop in arg.GetType().GetProperties())
-							attributes.Add(prop.Name, prop.GetValue(arg, null) as string);
-				}
-			}
+		    if (args == null) return Add(name, value, attributes);
+		    foreach (var arg in args)
+		    {
+		        if (arg is string)
+		            value = arg as string;
+		        else
+		            foreach (var prop in arg.GetType().GetProperties())
+		                attributes.Add(prop.Name, prop.GetValue(arg, null) as string);
+		    }
 
-			return Add(name, value, attributes);
+		    return Add(name, value, attributes);
 		}
 
 		private XmlElement Add(string name, string value, IDictionary<string, string> attributes)

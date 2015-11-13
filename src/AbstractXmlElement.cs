@@ -7,7 +7,7 @@ namespace XmlGuy
 {
 	public abstract class AbstractXmlElement : IXmlElement
 	{
-		public AbstractXmlElement(XmlElement parent = null)
+	    protected AbstractXmlElement(XmlElement parent = null)
 		{
 			Parent = parent;
 		}
