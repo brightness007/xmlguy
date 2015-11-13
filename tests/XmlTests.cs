@@ -27,7 +27,7 @@ namespace XmlGuyTests
         public void ValidationCheckIdentifiesErrors()
         {
             var doc = new XmlGuy.XmlDocument().Begin("root").Add("ns:ben");
-            Assert.IsFalse(doc.);
+            //Assert.IsFalse(doc.Up());
         }
 
 		[Test]

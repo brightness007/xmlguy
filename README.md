@@ -15,7 +15,7 @@ doc.Begin("organisation")
 		.Add("office", new { name = "Head Office", location = "Balmain, Sydney" }).Up()
 		.Up()
 	.Add("revenue", "0").Up()
-	.Add("description").Data("This organisation is a world class leader in excellence").Up()
+	.Add("description").CData("This organisation is a world class leader in excellence").Up()
 	.Add("investors");
 
 Console.WriteLine(doc.ToString(true)); // enable pretty formatting
@@ -40,13 +40,7 @@ This will produce
 </organisation>
 ```
 ## Installation
-XMLGuy is available in [NuGet](http://nuget.org/packages/XmlGuy), which you can access via Visual Studio's package manager, or by running
-```
-Install-Package XmlGuy
-```
-from the package manager console.
-
-Alternatively, you can download and build the source yourself.
+You can download and build the source yourself.
 
 ## Current Status
 As far as I know, XMLGuy produces valid XML for elements, attributes, text values and CData values.

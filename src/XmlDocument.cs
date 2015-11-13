@@ -86,12 +86,7 @@ namespace XmlGuy
 
 		private string GetAttributes(XmlElement e)
 		{
-			string s = " ";
-
-			foreach (var attr in e.Attributes)
-				s += attr.Key + "=\"" + attr.Value + "\" ";
-
-			return s;
+		    return e.Attributes.Aggregate(" ", (current, attr) => current + (attr.Key + "=\"" + attr.Value + "\" "));
 		}
 	}
 }
