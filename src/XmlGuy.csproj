@@ -46,6 +46,7 @@
     <Compile Include="AbstractXmlElement.cs" />
     <Compile Include="IXmlElement.cs" />
     <Compile Include="StringBuilderExtensions.cs" />
+    <Compile Include="XmlDocumentWithout.cs" />
     <Compile Include="XmlDocument.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XmlElement.cs" />
