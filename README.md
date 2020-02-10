@@ -2,6 +2,10 @@
 
 XMLGuy is a fluent, lightweight, flexible XML builder for .NET. It is heavily inspired by [xmlbuilder-js](https://github.com/oozcitak/xmlbuilder-js).
 
+* Upgrade to Visual Studio 2017
+* Target Framework:
+  * .Net Stanndard 2.0
+
 ## Usage
 ``` csharp
 var doc = new XmlDocument();

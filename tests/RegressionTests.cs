@@ -1,13 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using NUnit.Framework;
 using XmlGuy;
 
 namespace XmlGuyTests
 {
-	public class RegressionTests
+    public class RegressionTests
 	{
 		[Test]
 		public void RT1()
@@ -37,9 +33,41 @@ namespace XmlGuyTests
 				.Add("staff")
 					.Add("member", new { firstname = "Ben", lastname = "Hughes", staff_id = "123"}).Up()
 					.Add("member", new { firstname = "Freddie", lastname = "Smith", staff_id = "124"}).Up();
-				
-            Assert.AreEqual(Resource.BookstoreExpectedNotPretty, doc.ToString());
-            Assert.AreEqual(Resource.BookstoreExpectedPretty, doc.ToString(true));
+
+            string BookstoreExpectedNotPretty =
+                @"<?xml version=""1.0"" encoding=""utf-8""?><bookstore ><locations ><location store_id=""1"" address=""21 Jump St"" phone=""123456""  /><location store_id=""2"" address=""342 Pitt St"" phone=""9876543""  /></locations><books ><book title=""The Enchiridion"" price=""9.75"" ><author >Epictetus</author><stores_with_stock ><store store_id=""1""  /></stores_with_stock></book><book title=""Signal to Noise"" price=""5.82"" ><author >Neil Gaiman</author><author >Dave McKean</author><stores_with_stock ><store store_id=""1""  /><store store_id=""2""  /></stores_with_stock></book></books><staff ><member firstname=""Ben"" lastname=""Hughes"" staff_id=""123""  /><member firstname=""Freddie"" lastname=""Smith"" staff_id=""124""  /></staff></bookstore>";
+
+            string BookstoreExpectedPretty = @"
+<?xml version=""1.0"" encoding=""utf-8""?>
+<bookstore >
+	<locations >
+		<location store_id=""1"" address=""21 Jump St"" phone=""123456""  />
+		<location store_id=""2"" address=""342 Pitt St"" phone=""9876543""  />
+	</locations>
+	<books >
+		<book title=""The Enchiridion"" price=""9.75"" >
+			<author >Epictetus</author>
+			<stores_with_stock >
+				<store store_id=""1""  />
+			</stores_with_stock>
+		</book>
+		<book title=""Signal to Noise"" price=""5.82"" >
+			<author >Neil Gaiman</author>
+			<author >Dave McKean</author>
+			<stores_with_stock >
+				<store store_id=""1""  />
+				<store store_id=""2""  />
+			</stores_with_stock>
+		</book>
+	</books>
+	<staff >
+		<member firstname=""Ben"" lastname=""Hughes"" staff_id=""123""  />
+		<member firstname=""Freddie"" lastname=""Smith"" staff_id=""124""  />
+	</staff>
+</bookstore>".TrimStart();
+
+            Assert.AreEqual(BookstoreExpectedNotPretty, doc.ToString());
+            Assert.AreEqual(BookstoreExpectedPretty, doc.ToString(true));
 
 		    var xmlDoc = new System.Xml.XmlDocument();
             Assert.DoesNotThrow(() => xmlDoc.LoadXml(doc.ToString()));
